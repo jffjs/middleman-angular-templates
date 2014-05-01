@@ -12,7 +12,7 @@ class AngularTemplates < ::Middleman::Extension
       ''.tap do |html|
         Dir[File.join(base_dir, path, '**/*.{html,erb,slim,haml}')].each do |filename|
           template_name = File.basename(filename, '.*')
-          next unless template_name.slice!(0) == '_'
+          #next unless template_name.slice!(0) == '_'
           template_path = Pathname.new(File.join(File.dirname(filename), template_name)).relative_path_from(base_dir)
           html << content_tag(:script, partial(template_path), type: "text/ng-template", id: "#{template_path}.html")
         end
